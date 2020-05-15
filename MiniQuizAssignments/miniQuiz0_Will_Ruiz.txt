@@ -1,0 +1,40 @@
+QUIZ 2
+------------------------------------------------------------------
+Question 1:
+How to use Javascript to an HTML document?
+1. <j> [code here]</j>
+2. @{[code here}
+3. <script>[code here]<\script> 		(Correct)
+4. <?js[code here]?>
+
+
+Question 2:
+Which of the following can be used to set responsive text size in HTML?
+1. vw - viewport width 				(Correct)
+2. cs - camera size
+3. as - area size
+4. va - view area
+
+
+
+Question 3:
+you can create a grid using what in CSS?
+1. <span>
+2. <section>
+3. <div> 					(Correct)
+4. <ol>
+
+
+Question 4:
+How do you enter in server-side only comments on a MVC view?
+1. --[comment here]
+2. <!--[comment here] -->
+3. @*[comment here*@ 				(correct)
+4. /*[comment here]*/
+
+Question 5:
+Which of the following is NOT an acceptable HTML Input type?
+1. Button
+2. Color
+3. Radio
+4. List (Correct)

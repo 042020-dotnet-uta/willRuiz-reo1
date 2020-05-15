@@ -1,0 +1,46 @@
+
+1.  Which is true about ViewBag (a way to send data to a View in RazorView)
+
+A.transfer temporary data (which is not included in model) from the controller to the view
+B.Uses @Viewbag.someVariableHere in the View to access the variable made in the Controller
+C.You can assign any number of properties and values to ViewBag
+D.All the above
+
+----------------------------
+
+2.  Use correct syntax for a ViewBag to send this list from the Controller to a View
+
+IList<Student> studentList = new List<Student>() { 
+                    new Student(){ StudentID=1, StudentName="Steve", Age = 21 },
+                    new Student(){ StudentID=2, StudentName="Bill", Age = 25 }  };
+public ActionResult Index()
+{
+	//write Viewbag to hold all items of the List and display total number of students
+
+	ViewBag.someVar = studenList.count();
+
+	return View();
+}
+
+------------------------------
+
+3.  From above example, access the ViewBag in your View
+
+A.<p>Total Student: </p> @someVar		  	-wrong
+B.<p>Total Student: </p> Viewbag@SomeVar		-wrong
+C.<p>Total Student: </p> ViewBag.someVar		-wrong
+D.<p>Total Student: </p> @ViewBag.someVar		-Correct
+
+output -> Total Student: 2
+
+---------------------------------
+
+4.  Which is true about ViewBag
+
+A. ViewBag doesn't require typecasting while retriving values from it
+B. When accessing the Viewbag in the view, there is no itelisense
+C. When accessing the Viewbag in the view, you will not know if you mistyped something till runtime
+D. All of the Above
+
+
+ 

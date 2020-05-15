@@ -1,0 +1,58 @@
+CLOUD COMPUTING
+----------------------
+
+What is SaaS (Software as a Service)
+
+A.  The software provider handles the whole technology 
+    stack and just delivers an applicatoin that you can use 
+    like (Google Apps or Salesforce).  
+    You do not install the software on your computer
+B.  The SaaS provider handles installing, managing, and upgrading 
+    software.  You as an end user don't have to deal with any of this
+C.  If your business uses a SaaS application.  Integrating with any
+    of the other systems your business uses.  The SaaS provider offers
+    limited or no support
+
+D.  All of the above
+
+What is PaaS (Platform as a Service) 
+
+A.  The provider handles everything up to BUT NOT inluding the data and app layer
+    Its good for developers don't want to mange OS, DB, Middleware or Web server for
+    their apps.  It's mainly used by Developers (Force.com)
+B.  Built on virtualization technology, so resources can easily be scaled 
+    up or down 
+C.  Developers are limited to the Providers languages, Tools, and lock-in.  There app 
+    they develope my only work on this platform ... could be a
+    huge amount of work to migrate to another platform 
+D.  All of the above   
+
+What is IaaS (Infrastructure as a Service)?
+
+A.  Computing infrastructure and resources but, in a virtual environment so that, many
+    different clients can access.  These would be like Data storage (Amazon S3), 
+    Virtualizatoin, Servers and Networking (Rackspace, Amazon AWS)
+B.  This allows clients to put any kind of OS, Data, Middleware or applications they want on top
+    of this service.  But, the client must manage these themselves
+C.  Helps you avoid the expense and complexity of buying and
+    managing your own physical servers and other datacenter infrastructure
+D.  All of the above
+
+Which statement/s is correct?
+
+A.  Public Cloud is All hardware, software, etc, is owned and managed by the cloud provider
+B.  Private Cloud is Services and infrastructure are maintained on a private network
+C.  Public cloud and either private and/or on-site clouds combined
+D.  All of the above
+
+Cloud is popular because?
+
+A.  Eliminate the expense of hardware and software, the inefficiencies of setting up data centers
+B.  Vendors deals with electricity payments for power and cooling, and the hiring of additional 
+    IT experts for managing infrastructure. 
+C.  IT teams can be more productive and actually focus on their business goals
+D.  All of the above
+
+
+
+
