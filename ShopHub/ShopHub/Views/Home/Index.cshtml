@@ -1,0 +1,19 @@
+﻿@using  ShopHub.Service.Interface
+@inject ISessionManager _sessionManager
+@using  ShopHub.Service.Utilities.Enum
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+    var name = _sessionManager.GetUserName();
+    var userTypeId = _sessionManager.GetUserTypeId();
+}
+
+
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome @name</h1>
+
+    </div>
+

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+
+@using  ShopHub.Service.Utilities.Enum
+@using  ShopHub.Service.Interface
+@inject ISessionManager _sessionManager
+
+@{
+    var name = _sessionManager.GetUserName();
+    var userTypeId = _sessionManager.GetUserTypeId();
+}
+<html lang="en">
+<!--Style section-->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShopHub</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/pnotify.custom.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!--This is the top navbar header which share to every page-->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ShopHub</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="nav-item">
+                            @if (string.IsNullOrEmpty(name))
+                            {
+                                <a href="/AuthUser/Login" class="btn btn-link navbar-btn navbar-link">Login</a>
+                            }
+                            else
+                            {
+                                <a href="/AuthUser/Logout" class="btn btn-link navbar-btn navbar-link">Logout</a>
+                            }
+                        </li>
+                        <li class="nav-item">
+                            @if (!string.IsNullOrEmpty(name))
+                            {
+                                <span class="btn navbar-btn">Welcome: &nbsp; @name</span>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Side navbar which is appearing on every page -->
+    <div class="sidenav">
+        <ul class="leftSideUl">
+            <li><h2 class="shopHubHeading">Shop Hub</h2></li>
+
+            @if (userTypeId.Equals(Convert.ToInt32(UserTypeNames.Admin)))
+            {
+                <li><a asp-action="AllOrderHistory" asp-controller="Admin">All Order History</a></li>
+                <li><a asp-action="LocationOrderHistory" asp-controller="Admin">Location By Order</a></li>
+                <li><a asp-action="Location" asp-controller="Admin">Manage Locations</a></li>
+                <li><a asp-action="ProductList" asp-controller="Admin">Manage Products</a></li>
+            }
+            else
+            {
+                <li><a asp-action="StorePlace" asp-controller="Customer">Stores</a></li>
+                <li><a asp-action="OrderHistory" asp-controller="Customer">Orders History</a></li>
+            }
+
+        </ul>
+
+    </div>
+
+    <!-- This is the main div in which html of open page is load
+        For example if I open up admin page then RenderBody() render
+        all the html content to this div
+        -->
+    <div class="container">
+        <main role="main" class="pb-3 main">
+            @RenderBody()
+        </main>
+    </div>
+    <!--This is the footer div, appear at every page bottom-->
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <div class="bottomDiv">
+                &copy; 2020 - ShopHub - <a href="javascript:void(0)">Privacy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!--These are the common javascript scripts files which are using at every page who uses this _Layout.cshtml-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/pnotify.custom.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

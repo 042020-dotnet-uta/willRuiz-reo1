@@ -1,0 +1,24 @@
+﻿@model IEnumerable<ShopHub.Model.Models.Order>
+
+@{
+    ViewData["Title"] = "OrderHistory";
+}
+
+    <div class="text-center">
+
+        <h1>All Order History</h1>
+        <hr />
+        @foreach (var item in Model)
+        {
+            <div class="card w-75 card_margin">
+                <div class="card-body">
+                    <h5 class="card-title">Order info</h5>
+                    <p class="card-text"><b> @item.User.FirstName  @item.User.LastName </b> have placed an order with following details: </p>
+                    <p class="card-text">Order placed at @item.Timestamp.ToString("MM/dd/yyyy h:mm tt")</p>
+                    <p class="card-text">Order product is <b>@item.Product.Name</b> with <b>@item.Quantity</b> quantities</p>
+                    <p class="card-text">Location logged is <b>@item.Product.Location.Name</b></p>
+                </div>
+            </div>
+        }
+
+    </div>

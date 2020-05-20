@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ShopHub.Model.DTOs.LocationDto>;  
+    @*A list of all Locations is being passed *@
+
+@{
+    ViewData["Title"] = "Location";
+}
+
+    <div class="text-center">
+
+        <p></p>
+        <p>
+            <a asp-action="CreateLocation">Create New</a>   @*Admin controller / create Location Method*@
+        </p>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        @*Html handler like asp-for ... binding LocationDTO.Name for teh IEnumerable List*@
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <a href="/Admin/DeleteLocation/?locationId=@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>

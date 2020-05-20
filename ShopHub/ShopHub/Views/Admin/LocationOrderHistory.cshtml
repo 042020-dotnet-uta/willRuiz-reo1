@@ -1,0 +1,98 @@
+﻿@model ShopHub.Model.DTOs.OrderDto;
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+
+
+    <div class="text-center">
+        <h1>Store Order History</h1>
+        <hr>
+
+        <div class="form-group">
+            <label class="control-label"> Select Store Location</label>
+                                                                @*This accepts JSON data change see funtion below*@
+            <select asp-for="LocationId" id="locationDropDown" onchange="populateOders();" class="form-control" asp-items="@(new SelectList(Model.Locations,"Id","Name"))"></select>
+            <span asp-validation-for="LocationId" class="text-danger"></span>
+        </div>
+        <div id="tableDiv">
+            <table class="table table-bordered table-hover" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>
+                            Order Id
+                        </th>
+                        <th>
+                            Customer Name
+                        </th>
+                        <th>
+                            Product Name
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Timestamp
+                        </th>
+                        <th>
+                            Price
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody id="orderBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+@section scripts{
+    <script src="~/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#locationDropDown').trigger("change");   //If the location changes target this element
+        });
+        function populateOders() {
+            var locationValue = $('#locationDropDown').val();
+
+            $.get("/Admin/LocationBaseOrderData", { locationId: locationValue }).done(function (data) {
+                debugger;
+                $('#tableDiv').html('');
+                $('#dataTable_wrapper').remove();
+                $('#tableDiv').append('<table class="table table-bordered table-hover" id="dataTable"><thead><tr><th>Order Id</th><th>Customer Name</th><th>Product Name</th><th>Quantity</th><th>Timestamp</th><th>Price</th></tr></thead><tbody id="orderBody"><tbody></table>')
+
+                $('#dataTable').dataTable({
+                    data: data,
+                    columns: [
+                        {
+                            "data": "id",
+                            "searchable": false,
+                        },
+                        { "data": "customerName" },
+                        { "data": "productName" },
+                        {
+                            "data": "quantity",
+                            "searchable": false,
+                        },
+                        {
+                            "data": "strTimestamp",
+                            "searchable": false,
+                        },
+                        {
+                            "data": "price",
+                            "searchable": false,
+                        }
+                    ]
+                });
+            });
+        }
+    </script>
+
+}
